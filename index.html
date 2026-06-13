@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Torin Dove Financial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF0E6;
+      --cream-dark: #F0E4D4;
+      --peach: #E8A87C;
+      --peach-dark: #D4906A;
+      --charcoal: #2D2D2D;
+      --slate: #5A5A5A;
+      --gold: #C9A84C;
+      --white: #FFFDF9;
+      --card-border: rgba(201, 168, 76, 0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(250, 240, 230, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: -0.2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--slate);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--peach-dark); }
+
+    /* HERO */
+    #home {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      padding: 5rem 2rem;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--charcoal);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--peach-dark);
+    }
+
+    .hero-subline {
+      font-size: 1rem;
+      color: var(--slate);
+      margin-bottom: 2rem;
+      max-width: 420px;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--peach);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--peach-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--charcoal);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1.5px solid var(--charcoal);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--peach);
+      color: var(--peach-dark);
+      transform: translateY(-1px);
+    }
+
+    .hero-photo {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 4/5;
+      border-radius: 20px;
+      border: 2px solid var(--card-border);
+      overflow: hidden;
+      margin-left: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+
+    .hero-traits {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--card-border);
+      flex-wrap: wrap;
+    }
+
+    .trait-item {}
+
+    .trait-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    .trait-label {
+      font-size: 0.75rem;
+      color: var(--slate);
+      margin-top: 2px;
+    }
+
+    /* GOLD DIVIDER */
+    .gold-divider {
+      width: 100%;
+      height: 2px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--gold) 0px,
+        var(--gold) 12px,
+        transparent 12px,
+        transparent 20px
+      );
+      opacity: 0.4;
+    }
+
+    /* SHARED SECTION STYLES */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+      letter-spacing: -0.3px;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .about-photo-wrap {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 16px;
+      border: 2px solid var(--card-border);
+      overflow: hidden;
+    }
+
+    .about-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+
+    .about-content p {
+      font-size: 1rem;
+      color: var(--slate);
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .credential-card {
+      background: var(--cream);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .cred-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .cred-value {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      line-height: 1.4;
+    }
+
+    /* VIDEOS */
+    #videos {
+      background: var(--cream);
+    }
+
+    .videos-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .videos-channel-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--peach-dark);
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--peach);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+
+    .videos-channel-link:hover { color: var(--charcoal); }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .video-card {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .video-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.15);
+    }
+
+    .video-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--cream-dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-play-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--peach-dark);
+      margin-left: 2px;
+    }
+
+    .video-thumb-label {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream-dark);
+    }
+
+    .video-thumb-text {
+      font-size: 0.75rem;
+      color: var(--slate);
+      text-align: center;
+      padding: 1rem;
+      font-style: italic;
+    }
+
+    .video-info {
+      padding: 1rem 1.1rem 1.2rem;
+    }
+
+    .video-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .video-info h3 {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      line-height: 1.4;
+      margin-bottom: 6px;
+    }
+
+    .video-meta {
+      font-size: 0.78rem;
+      color: var(--slate);
+    }
+
+    .channel-cta {
+      margin-top: 3rem;
+      text-align: center;
+      padding: 2.5rem;
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+    }
+
+    .channel-cta p {
+      font-size: 1rem;
+      color: var(--slate);
+      margin-bottom: 1.25rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.5);
+      padding: 2.5rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--peach); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      width: 100%;
+      text-align: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1.25rem; }
+      #home { padding: 3rem 1.25rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-photo { max-width: 100%; margin: 0; aspect-ratio: 3/2; }
+      .hero-traits { gap: 1.5rem; }
+      section { padding: 3.5rem 1.25rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photo-wrap { aspect-ratio: 3/2; }
+      .about-credentials { grid-template-columns: 1fr; }
+      .videos-header { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo">Torin Dove Financial</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="https://www.youtube.com/@TorinDoveFinancial" target="_blank" rel="noopener">YouTube ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Finance Education</div>
+        <h1 class="hero-headline">
+          Empowering <em>everyone</em> to invest with confidence.
+        </h1>
+        <p class="hero-subline">
+          Covering the real terms, concepts, and strategies — explained clearly.
+        </p>
+        <div class="hero-ctas">
+          <a href="https://www.youtube.com/@TorinDoveFinancial" target="_blank" rel="noopener" class="btn-primary">Watch on YouTube</a>
+          <a href="#about" class="btn-secondary">About Me</a>
+        </div>
+        <div class="hero-traits">
+          <div class="trait-item">
+            <div class="trait-name">Curious</div>
+            <div class="trait-label">Continuous learner</div>
+          </div>
+          <div class="trait-item">
+            <div class="trait-name">Transparent</div>
+            <div class="trait-label">No hidden agenda</div>
+          </div>
+          <div class="trait-item">
+            <div class="trait-name">Driven</div>
+            <div class="trait-label">Relentless work ethic</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="IMG_4394.jpeg" alt="Torin Dove on the NYSE trading floor" />
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-photo-wrap">
+          <img src="IMG_4394.jpeg" alt="Torin Dove on the NYSE trading floor" />
+        </div>
+        <div class="about-content">
+          <div class="section-eyebrow">About Me</div>
+          <h2 class="section-title">Hi, I'm Torin Dove.</h2>
+          <p>
+            I'm a Finance and Economics student with a minor in Financial Planning, and I created Torin Dove Financial to share what I find genuinely interesting about markets, money, and investing — in a way that's actually digestible and entertaining.
+          </p>
+          <p>
+            That might mean breaking down a major market story happening right now, doing a deep dive on an individual stock, or exploring a concept that's been sitting in my head. Whatever it is, I cover it the way I'd want it explained — using real terms, real analysis, and clear context. No dumbing it down, but no gatekeeping either.
+          </p>
+          <p>
+            Outside of content creation, I'm a Research Fellow at CAPE Research Corp, where I work on political finance data and investment research. I'm also President of my school's Investment Club and Finance Society, and VP of the Financial Planning Club — and I competed as a CFA Research Challenge Local Champion.
+          </p>
+          <div class="about-credentials">
+            <div class="credential-card">
+              <div class="cred-label">Research</div>
+              <div class="cred-value">Research Fellow<br/>CAPE Research Corp</div>
+            </div>
+            <div class="credential-card">
+              <div class="cred-label">Competition</div>
+              <div class="cred-value">CFA Research Challenge<br/>Local Champion</div>
+            </div>
+            <div class="credential-card">
+              <div class="cred-label">Leadership</div>
+              <div class="cred-value">President, Investment Club &amp; Finance Society<br/>VP, Financial Planning Club</div>
+            </div>
+            <div class="credential-card">
+              <div class="cred-label">Competition</div>
+              <div class="cred-value">2nd Place<br/>Quinnipiac GAME Forum 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- VIDEOS -->
+  <section id="videos">
+    <div class="section-inner">
+      <div class="videos-header">
+        <div>
+          <div class="section-eyebrow">Latest Content</div>
+          <h2 class="section-title">Recent Videos</h2>
+        </div>
+        <a href="https://www.youtube.com/@TorinDoveFinancial" target="_blank" rel="noopener" class="videos-channel-link">
+          View full channel ↗
+        </a>
+      </div>
+
+      <div class="video-grid">
+
+        <!-- VIDEO 1: Should AI Run Your Finances? -->
+        <a href="https://www.youtube.com/watch?v=yQVX72L_yrA" target="_blank" rel="noopener" class="video-card">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/yQVX72L_yrA/hqdefault.jpg" alt="Should AI Run Your Finances?" />
+            <div class="video-play-btn">
+              <svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+            </div>
+          </div>
+          <div class="video-info">
+            <span class="video-tag">Deep Dive</span>
+            <h3>Should AI Run Your Finances?</h3>
+            <div class="video-meta">Torin Dove Financial</div>
+          </div>
+        </a>
+
+        <!-- VIDEO 2: Does QQQ Really Deserve The Hype? -->
+        <a href="https://www.youtube.com/watch?v=IfVJGZjqnBk" target="_blank" rel="noopener" class="video-card">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/IfVJGZjqnBk/hqdefault.jpg" alt="Does QQQ Really Deserve The Hype?" />
+            <div class="video-play-btn">
+              <svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+            </div>
+          </div>
+          <div class="video-info">
+            <span class="video-tag">ETF Breakdown</span>
+            <h3>Does QQQ Really Deserve The Hype?</h3>
+            <div class="video-meta">Torin Dove Financial</div>
+          </div>
+        </a>
+
+        <!-- VIDEO 3: Why investing gets harder -->
+        <a href="https://www.youtube.com/watch?v=JhBXW7ewePI" target="_blank" rel="noopener" class="video-card">
+          <div class="video-thumb">
+            <img src="https://img.youtube.com/vi/JhBXW7ewePI/hqdefault.jpg" alt="Why What Should I Invest In Gets Harder The More You Learn" />
+            <div class="video-play-btn">
+              <svg viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+            </div>
+          </div>
+          <div class="video-info">
+            <span class="video-tag">Thought Piece</span>
+            <h3>Why "What Should I Invest In?" Gets Harder The More You Learn</h3>
+            <div class="video-meta">Torin Dove Financial</div>
+          </div>
+        </a>
+
+      </div>
+
+
+
+      <div class="channel-cta">
+        <p>New videos posted regularly. Subscribe to stay updated.</p>
+        <a href="https://www.youtube.com/@TorinDoveFinancial" target="_blank" rel="noopener" class="btn-primary">Visit the Channel</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Torin Dove Financial</div>
+      <ul class="footer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="https://www.youtube.com/@TorinDoveFinancial" target="_blank" rel="noopener">YouTube ↗</a></li>
+      </ul>
+    </div>
+    <div class="footer-inner">
+      <p class="footer-copy">© 2026 Torin Dove Financial. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
